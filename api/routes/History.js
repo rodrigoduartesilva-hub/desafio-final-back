@@ -81,7 +81,7 @@ router.post('/bid/:id', validateTheToken, async (req, res) => {
 // Essa função chama as recomendações
 async function GenerateData(){
 
-    console.log("Generating Recommendations");
+    console.log("Gerando Recomendações");
     const { spawn } = require('child_process');
 
     // o caminho da recomendação
