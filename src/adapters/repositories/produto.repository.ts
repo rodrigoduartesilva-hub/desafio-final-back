@@ -1,11 +1,11 @@
 import { IProdutoEntity } from "../../domain/entities/produtos/produto.entity"
-import { IPedidoRepository } from "../../domain/repositories/pedido.repository.interface";
+import { IProdutoRepository } from "../../domain/repositories/produto.repository.interface";
 import { MysqlDatabase } from "../../infrastructure/persistence/mysql/mysql.database";
 import { IDatabaseModel } from "../../infrastructure/persistence/databasemodel.interface";
 import * as Sequelize from 'sequelize';
 import produtosModelsMysqlDatabase from "../../infrastructure/persistence/mysql/models/produtos.models.mysql.database";
 
-class ProdutoRepository implements IPedidoRepository {
+class ProdutoRepository implements IProdutoRepository {
     private _type: string = 'IProduto';
 
     constructor(

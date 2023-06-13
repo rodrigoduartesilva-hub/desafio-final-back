@@ -1,5 +1,5 @@
 export interface IProdutoEntity {
-    indexId: number,
+    idproduto: number,
     nome: string,
     foto: string,
     preco: number,

@@ -6,13 +6,14 @@ import * as expressWinston from 'express-winston';
 import cors from 'cors';
 import { debug } from 'debug';
 import constants from '../../config/constants';
+import apiConfig from '../../config/api.config';
 
 import { CommonRoutesConfig } from '../../../adapters/apis/routes/common.routes';
 import { CategoriaRoutes } from '../../../adapters/apis/routes/categoria.routes';
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
-const port = 3000;
+const port = apiConfig.port;
 const routes: CommonRoutesConfig[] = [];
 const debugLog: debug.IDebugger = debug('app');
 
