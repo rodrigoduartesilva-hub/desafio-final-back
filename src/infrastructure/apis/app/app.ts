@@ -10,6 +10,7 @@ import apiConfig from '../../config/api.config';
 
 import { CommonRoutesConfig } from '../../../adapters/apis/routes/common.routes';
 import { CategoriaRoutes } from '../../../adapters/apis/routes/categoria.routes';
+import { ProdutoRoutes } from '../../../adapters/apis/routes/produto.routes';
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
@@ -36,6 +37,7 @@ if(!process.env.DEBUG) {
 
 app.use(expressWinston.logger(loggerOptions));
 routes.push(new CategoriaRoutes(app));
+routes.push(new ProdutoRoutes(app));
 
 app.get('/', (req: express.Request, res: express.Response) => {
     res.status(200).send({message: constants.MESSAGES.RODANDO.replace('{port}', '3000')});
@@ -45,7 +47,7 @@ server.listen(port, () => {
     routes.forEach((route: CommonRoutesConfig) => {
         debugLog(`Rotas configuradas para ${route.getName()}`);
     });
-    console.log({message: constants.MESSAGES.RODANDO.replace('{port}', '3000')});
+    console.log({message: constants.MESSAGES.RODANDO});
 });
 
 export default app;
