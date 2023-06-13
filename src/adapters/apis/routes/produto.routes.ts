@@ -9,13 +9,13 @@ export class ProdutoRoutes extends CommonRoutesConfig {
 
     configureRoutes(): express.Application {
         this.app.route(`/produtos`)
-            .get(produtoController.listprodutos)
-            .post(produtoController.createproduto)
+            .get(produtoController.listProdutos)
+            .post(produtoController.createProduto)
 
         this.app.route(`/produtos/:idproduto`)
             .get(produtoController.getProdutoById)
-            .put(produtoController.updateproduto)
-            .delete(produtoController.deleteproduto)
+            .put(produtoController.updateProduto)
+            // .delete(produtoController.deleteProduto)
 
         return this.app;
     }
