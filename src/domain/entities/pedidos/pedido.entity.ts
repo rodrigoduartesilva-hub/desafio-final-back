@@ -1,5 +1,5 @@
 export interface IPedidoEntity {
-    indexId?: number,
+    idpedido: number,
     usuario: string,
     listaProdutos: object,
     valor: number

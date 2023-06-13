@@ -8,8 +8,8 @@ class DeleteProdutoUseCase implements IUseCase {
 
     }
 
-    async execute(data: { idcategoria: number}): Promise<void> {
-        return await this._repository.deleteById(data.idcategoria);
+    async execute(data: { idproduto: number}): Promise<void> {
+        return await this._repository.deleteById(data.idproduto);
     }
 }
 

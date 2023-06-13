@@ -1,7 +1,7 @@
 import { TipoUsuario } from "./tipousuario.entity";
 
 export interface IPessoaEntity {
-    indexId?: number,
+    idpessoa: number,
     nome: string,
     email: string,
     senha: string,

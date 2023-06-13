@@ -15,7 +15,7 @@ export class ProdutoRoutes extends CommonRoutesConfig {
         this.app.route(`/produtos/:idproduto`)
             .get(produtoController.getProdutoById)
             .put(produtoController.updateProduto)
-            // .delete(produtoController.deleteProduto)
+            .delete(produtoController.deleteProduto)
 
         return this.app;
     }

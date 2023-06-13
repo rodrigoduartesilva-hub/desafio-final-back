@@ -30,6 +30,13 @@ class ProdutoController {
         const produto = await updateProdutoUsecase.execute(req.body);
         res.status(200).send(produto);
     }
+
+    async deleteProduto(req: express.Request, res: express.Response) {
+        const produto = await deleteProdutoUsecase.execute({
+            idproduto: Number(req.params.idproduto)
+        });
+        res.status(204).send();
+    }
 }
 
 export default new ProdutoController();

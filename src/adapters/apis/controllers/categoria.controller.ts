@@ -32,7 +32,7 @@ class CategoriaController {
     }
 
     async deleteCategoria(req: express.Request, res: express.Response) {
-        const Categoria = await deleteCategoriaUsecase.execute({
+        const categoria = await deleteCategoriaUsecase.execute({
             idcategoria: Number(req.params.idcategoria)
         });
         res.status(204).send();
