@@ -4,19 +4,33 @@ import { MysqlDatabase } from "../../infrastructure/persistence/mysql/mysql.data
 import { IDatabaseModel } from "../../infrastructure/persistence/databasemodel.interface";
 import * as Sequelize from 'sequelize';
 import produtosModelsMysqlDatabase from "../../infrastructure/persistence/mysql/models/produtos.models.mysql.database";
+import categoriasModelsMysqlDatabase from "../../infrastructure/persistence/mysql/models/categorias.models.mysql.database";
 
 class ProdutoRepository implements IProdutoRepository {
     private _type: string = 'IProduto';
 
     constructor(
         private _database: IDatabaseModel,
-        private _modelProdutos: Sequelize.ModelCtor<Sequelize.Model<any, any>>
+        private _modelProdutos: Sequelize.ModelCtor<Sequelize.Model<any, any>>,
+        private _modelCategorias: Sequelize.ModelCtor<Sequelize.Model<any, any>>,
         ){
+            this._modelProdutos.hasOne(this._modelCategorias, {
+                foreignKey: 'idcategoria',
+                as: 'categoria'
+            });
     }
 
     async readById(resourceId: number): Promise<IProdutoEntity | undefined> {
-        const produto = await this._database.read(this._modelProdutos, resourceId);
-        return produto;
+        try {
+            const produto = await this._database.read(this._modelProdutos, resourceId, {
+                include: [
+                    'categoria'
+                ]
+            });
+            return produto;
+        } catch (error) {
+            throw new Error((error as Error).message);
+        }
     }
 
     async create(resource: IProdutoEntity): Promise<IProdutoEntity> {
@@ -42,5 +56,6 @@ class ProdutoRepository implements IProdutoRepository {
 
 export default new ProdutoRepository(
     MysqlDatabase.getInstance(),
-    produtosModelsMysqlDatabase
+    produtosModelsMysqlDatabase,
+    categoriasModelsMysqlDatabase
 );

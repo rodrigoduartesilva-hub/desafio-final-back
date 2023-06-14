@@ -7,7 +7,8 @@ export default MysqlDatabase.getInstance().createModel('pedido', {
         primaryKey: true,
         field: 'idpedido'
     },
+    idpessoa: Sequelize.DataTypes.INTEGER,
+    idproduto: Sequelize.DataTypes.INTEGER,
     usuario: Sequelize.DataTypes.STRING,
-    // listaProdutos: Sequelize.DataTypes.,
     valor: Sequelize.DataTypes.STRING,
 });
