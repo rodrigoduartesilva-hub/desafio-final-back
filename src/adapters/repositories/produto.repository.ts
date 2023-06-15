@@ -14,9 +14,9 @@ class ProdutoRepository implements IProdutoRepository {
         private _modelProdutos: Sequelize.ModelCtor<Sequelize.Model<any, any>>,
         private _modelCategorias: Sequelize.ModelCtor<Sequelize.Model<any, any>>,
         ){
-            this._modelProdutos.hasOne(this._modelCategorias, {
+            this._modelProdutos.belongsTo(this._modelCategorias, {
                 foreignKey: 'idcategoria',
-                as: 'categoria'
+                as: 'categorias'
             });
     }
 
@@ -24,9 +24,10 @@ class ProdutoRepository implements IProdutoRepository {
         try {
             const produto = await this._database.read(this._modelProdutos, resourceId, {
                 include: [
-                    'categoria'
+                    'categorias'
                 ]
             });
+            console.log(produto);
             return produto;
         } catch (error) {
             throw new Error((error as Error).message);

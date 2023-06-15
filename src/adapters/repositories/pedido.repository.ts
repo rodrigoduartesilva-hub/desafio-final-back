@@ -18,11 +18,11 @@ class PedidoRepository implements IPedidoRepository {
         ){
             this._modelPedidos.hasMany(this._modelProdutos, {
                 foreignKey: 'idproduto',
-                as: 'produto'
+                as: 'produtos'
             });
             this._modelPedidos.hasOne(this._modelPessoas, {
                 foreignKey: 'idpessoa',
-                as: 'pessoa'
+                as: 'pessoas'
             });
     }
 
@@ -30,7 +30,8 @@ class PedidoRepository implements IPedidoRepository {
         try {
             const pedido = await this._database.read(this._modelPedidos, resourceId, {
                 include: [
-                    'produto'
+                    'produtos',
+                    'pessoas'
                 ]
             });
             return pedido;
