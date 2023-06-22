@@ -3,6 +3,5 @@ export interface IProdutoEntity {
     nome: string,
     foto: string,
     preco: number,
-    descricao: string,
-    estoque: number
+    descricao: string
 }

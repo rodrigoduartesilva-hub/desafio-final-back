@@ -11,6 +11,5 @@ export default MysqlDatabase.getInstance().createModel('produto', {
     nome: Sequelize.DataTypes.STRING,
     foto: Sequelize.DataTypes.STRING,
     preco: Sequelize.DataTypes.NUMBER,
-    descricao: Sequelize.DataTypes.STRING,
-    estoque: Sequelize.DataTypes.NUMBER
+    descricao: Sequelize.DataTypes.STRING
 });
