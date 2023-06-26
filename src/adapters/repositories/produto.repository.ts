@@ -45,7 +45,11 @@ class ProdutoRepository implements IProdutoRepository {
     }
 
     async list(): Promise<IProdutoEntity[]> {
-        return this._database.list(this._modelProdutos);
+        return this._database.list(this._modelProdutos, {
+            include: [
+                'categorias'
+            ]
+        });
     }
 
     async updateById(resource: IProdutoEntity): Promise<IProdutoEntity | undefined> {

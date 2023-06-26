@@ -10,7 +10,10 @@ const log: debug.IDebugger = debug('app:produto-controller');
 
 class ProdutoController {
     async listProdutos(req: express.Request, res: express.Response){
-        const produtos = await listProdutoUsecase.execute();
+        const limit = parseInt(req.query.limit as string) || 10;
+        const offset = parseInt(req.query.offset as string) || 0;
+
+        const produtos = await listProdutoUsecase.execute(limit, offset);
         res.status(200).send(produtos);
     }
 
