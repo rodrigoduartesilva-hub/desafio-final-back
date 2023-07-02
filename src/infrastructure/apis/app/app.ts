@@ -1,6 +1,8 @@
 import express from 'express';
 import * as http from 'http';
 
+
+
 import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 import cors from 'cors';
@@ -13,10 +15,12 @@ import { CategoriaRoutes } from '../../../adapters/apis/routes/categoria.routes'
 import { ProdutoRoutes } from '../../../adapters/apis/routes/produto.routes';
 import { PessoaRoutes } from '../../../adapters/apis/routes/pessoa.routes';
 import { PedidoRoutes } from '../../../adapters/apis/routes/pedido.routes';
+import { AuthRoutes } from '../../../adapters/apis/routes/auth.routes';
+// import { LoginAuthUseCase } from '../../../adapters/apis/routes/auth.routes';
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
-const port = apiConfig.port;
+const port = process.env.PORT;
 const routes: CommonRoutesConfig[] = [];
 const debugLog: debug.IDebugger = debug('app');
 
@@ -42,6 +46,7 @@ routes.push(new CategoriaRoutes(app));
 routes.push(new ProdutoRoutes(app));
 routes.push(new PessoaRoutes(app));
 routes.push(new PedidoRoutes(app));
+routes.push(new AuthRoutes(app));
 
 app.get('/', (req: express.Request, res: express.Response) => {
     res.status(200).send({message: constants.MESSAGES.RODANDO.replace('{port}', '3000')});

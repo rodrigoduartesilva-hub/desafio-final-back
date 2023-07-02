@@ -64,7 +64,7 @@ class PedidoRepository implements IPedidoRepository {
         }
     }
 
-    async create(resource: IPedidoEntity): Promise<IPedidoEntity> {
+    async create(resource: IPedidoEntity): Promise<IPedidoEntity | any> {
         try {
             const pedido = await this._database.create(this._modelPedidos, resource);
             pedido.idpedido = pedido.null;
@@ -79,7 +79,7 @@ class PedidoRepository implements IPedidoRepository {
             })
             return pedido;
         } catch (error) {
-            throw new Error((error as Error).message);
+           console.error(error);
         }
     }
 
