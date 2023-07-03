@@ -14,10 +14,6 @@ Railway: https://desafio-final-back-production-87a1.up.railway.app/
 
 ---
 
-## 📑 Documentação
-
-Insomnia: http://localhost:3000/
-
 ## 📁 Executar o projeto
 
 1.  Renomeie o arquivo na raiz do projeto `.env.example` para `.env`;
