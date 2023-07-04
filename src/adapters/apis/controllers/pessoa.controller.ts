@@ -18,12 +18,18 @@ class PessoaController {
         const pessoa = await readPessoaUsecase.execute({
             idpessoa: Number(req.params.idpessoa),
         });
-        res.status(200).send(pessoa);
+        res.send(pessoa);
     }
 
     async createPessoa(req: express.Request, res: express.Response) {
         const pessoa = await createPessoaUsecase.execute(req.body);
-        res.status(201).send(pessoa);
+        if(pessoa){
+            res.status(201).send(pessoa);
+        } else{
+            res.status(400).send({
+                error: "Erro ao criar usuario"
+            })
+        }
     }
 
     async updatePessoa(req: express.Request, res: express.Response) {
