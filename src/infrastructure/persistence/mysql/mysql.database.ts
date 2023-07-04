@@ -26,6 +26,9 @@ export class MysqlDatabase implements IDatabaseModel {
             port: this._port
         });
     }
+    readByWhere(type: any, dataWhere: any) {
+        throw new Error('Method not implemented.');
+    }
 
     public static getInstance(): MysqlDatabase {
         if (!MysqlDatabase._instance) {
